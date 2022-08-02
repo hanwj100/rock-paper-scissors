@@ -38,6 +38,13 @@ function getComputerChoice() {
     return choiceArray[choice];
 }
 
+
+function Winner(who, message) {
+    this.who = who;
+    this.message = message;
+}
+
+
 //takes player and computer choice as input and declares the winner of the round
 function determineWinner(playerSelection, computerSelection) {
     //same vs same = tie
@@ -57,18 +64,23 @@ function determineWinner(playerSelection, computerSelection) {
     //if either selection is paper and either selection is rock
     //winner is paper
 
-    let winner;
+    const winner = new Winner();
     if (playerSelection === computerSelection){
-        winner = "tie";
+        winner.who = "tie";
+        winner.message = `Tie between ${playerSelection}`;
     }
     else if ((playerSelection === "rock" || computerSelection === "rock") && (playerSelection === "scissors" || computerSelection === "scissors")) {
-        winner = (playerSelection === "rock") ? "player" : "computer";
+        winner.who = (playerSelection === "rock") ? "player" : "computer";
+        winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Rock beats scissors`
     }
     else if ((playerSelection === "paper" || computerSelection === "paper") && (playerSelection === "scissors" || computerSelection === "scissors")){
-        winner = (playerSelection === "scissors") ? "player" : "computer";
+        winner.who = (playerSelection === "scissors") ? "player" : "computer";
+        winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Scissors beats paper`
     }
     else if ((playerSelection === "rock" || computerSelection === "rock") && (playerSelection === "paper" || computerSelection === "paper")){
-        winner = (playerSelection === "paper") ? "player" : "computer";
+        winner.who = (playerSelection === "paper") ? "player" : "computer";
+        winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Paper beats rock`
     }
     return winner;
 }
+
