@@ -39,7 +39,7 @@ function getComputerChoice() {
 }
 
 //takes player and computer choice as input and declares the winner of the round
-function playRound(playerSelection, computerSelection) {
+function determineWinner(playerSelection, computerSelection) {
     //same vs same = tie
     //rock vs scissor = rock
     //scissor vs paper = scissor
