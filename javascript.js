@@ -65,7 +65,7 @@ function determineWinner(playerSelection, computerSelection) {
     //winner is paper
 
     const winner = new Winner();
-    if (playerSelection === computerSelection){
+    if (playerSelection === computerSelection) {
         winner.who = "tie";
         winner.message = `Tie between ${playerSelection}`;
     }
@@ -73,14 +73,43 @@ function determineWinner(playerSelection, computerSelection) {
         winner.who = (playerSelection === "rock") ? "player" : "computer";
         winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Rock beats scissors`
     }
-    else if ((playerSelection === "paper" || computerSelection === "paper") && (playerSelection === "scissors" || computerSelection === "scissors")){
+    else if ((playerSelection === "paper" || computerSelection === "paper") && (playerSelection === "scissors" || computerSelection === "scissors")) {
         winner.who = (playerSelection === "scissors") ? "player" : "computer";
         winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Scissors beats paper`
     }
-    else if ((playerSelection === "rock" || computerSelection === "rock") && (playerSelection === "paper" || computerSelection === "paper")){
+    else if ((playerSelection === "rock" || computerSelection === "rock") && (playerSelection === "paper" || computerSelection === "paper")) {
         winner.who = (playerSelection === "paper") ? "player" : "computer";
         winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Paper beats rock`
     }
     return winner;
 }
 
+//best out of 5 games, which means that the first to 3 points wins
+//it does not necessarily mean that there will be 5 games played total, there may be more if ties occur
+
+//take the choice of each player and determine a winner
+//print the winner message to the screen
+//add one point to the winner's score
+//play again if tied
+//stop after 5 points have been distributed
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    while (playerScore < 3 && computerScore < 3) {
+        let roundWinner = determineWinner(getPlayerChoice(), getComputerChoice());
+        console.log(roundWinner.message);
+        if (roundWinner.who === "player") {
+            playerScore += 1;
+            console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
+        }
+        else if (roundWinner.who === "computer") {
+            computerScore += 1;
+            console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
+        }
+        else { //tied
+            console.log("Play Again!")
+        }
+    }
+}
+game();
