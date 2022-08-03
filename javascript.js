@@ -31,7 +31,7 @@ function Winner(who, message) {
 
 //takes player and computer choice as input and declares the winner of the round
 function determineWinner(playerSelection, computerSelection) {
-  const winner = new Winner();
+  const winner = {};
   if (playerSelection === computerSelection) {
     winner.who = "tie";
     winner.message = `Tie between ${playerSelection}`;
