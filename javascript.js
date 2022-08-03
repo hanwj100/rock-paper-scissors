@@ -17,7 +17,7 @@ function getPlayerChoice() {
 
 //generates a random choice for the computer
 function getComputerChoice() {
-  let choiceArray = ["rock", "paper", "scissors"];
+  const choiceArray = ["rock", "paper", "scissors"];
   let choice = Math.floor(Math.random() * choiceArray.length);
   return choiceArray[choice];
 }
