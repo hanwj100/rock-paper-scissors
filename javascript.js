@@ -1,4 +1,27 @@
 
+//first to 3 points wins, there may be more than 5 games if ties occur
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+
+  while(1) {
+    let roundWinner = determineWinner(getPlayerChoice(), getComputerChoice());
+    console.log(roundWinner.message);
+    if (roundWinner.who === "player") {
+      playerScore += 1;
+      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
+    }
+    else if (roundWinner.who === "computer") {
+      computerScore += 1;
+      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
+    }
+    else { //tied
+      console.log("Play Again!")
+    }
+  }
+}
+
+game();
 
 //takes user input and returns formatted input if valid, else re-asks for input 
 function getPlayerChoice() {
@@ -50,26 +73,3 @@ function determineWinner(playerSelection, computerSelection) {
   }
   return winner;
 }
-
-//first to 3 points wins, there may be more than 5 games if ties occur
-function game() {
-  let playerScore = 0;
-  let computerScore = 0;
-
-  while(1) {
-    let roundWinner = determineWinner(getPlayerChoice(), getComputerChoice());
-    console.log(roundWinner.message);
-    if (roundWinner.who === "player") {
-      playerScore += 1;
-      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
-    }
-    else if (roundWinner.who === "computer") {
-      computerScore += 1;
-      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
-    }
-    else { //tied
-      console.log("Play Again!")
-    }
-  }
-}
-game();
