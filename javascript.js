@@ -56,7 +56,7 @@ function game() {
   let playerScore = 0;
   let computerScore = 0;
 
-  while (playerScore < 3 && computerScore < 3) {
+  while(1) {
     let roundWinner = determineWinner(getPlayerChoice(), getComputerChoice());
     console.log(roundWinner.message);
     if (roundWinner.who === "player") {
