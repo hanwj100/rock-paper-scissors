@@ -76,19 +76,11 @@ function buttonClicked (userSelection){
   console.log(determineWinner(userSelection, getComputerChoice()));
 }
 
-const body = document.querySelector("body");
-
-const rockBtn = document.createElement("button");
-rockBtn.textContent = "Rock Button";
+const rockBtn = document.querySelector("#rockBtn");
 rockBtn.addEventListener("click", () => buttonClicked("rock"));
-body.appendChild(rockBtn);
 
-const paperBtn = document.createElement("button");
-paperBtn.textContent = "Paper Button";
+const paperBtn = document.querySelector("#paperBtn");
 paperBtn.addEventListener("click", () => buttonClicked("paper"));
-body.appendChild(paperBtn);
 
-const scissorsBtn = document.createElement("button");
-scissorsBtn.textContent = "Scissors Button";
+const scissorsBtn = document.querySelector("#scissorsBtn");
 scissorsBtn.addEventListener("click", () => buttonClicked("scissors"));
-body.appendChild(scissorsBtn);
