@@ -9,19 +9,17 @@ function game() {
     console.log(roundWinner.message);
     if (roundWinner.who === "player") {
       playerScore += 1;
-      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
+      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`);
     }
     else if (roundWinner.who === "computer") {
       computerScore += 1;
-      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`)
+      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`);
     }
     else { //tied
-      console.log("Play Again!")
+      console.log("Play Again!");
     }
   }
 }
-
-game();
 
 //takes user input and returns formatted input if valid, else re-asks for input 
 function getPlayerChoice() {
@@ -61,15 +59,26 @@ function determineWinner(playerSelection, computerSelection) {
   }
   else if ((playerSelection === "rock" || computerSelection === "rock") && (playerSelection === "scissors" || computerSelection === "scissors")) {
     winner.who = (playerSelection === "rock") ? "player" : "computer";
-    winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Rock beats scissors`
+    winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Rock beats scissors`;
   }
   else if ((playerSelection === "paper" || computerSelection === "paper") && (playerSelection === "scissors" || computerSelection === "scissors")) {
     winner.who = (playerSelection === "scissors") ? "player" : "computer";
-    winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Scissors beats paper`
+    winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Scissors beats paper`;
   }
   else if ((playerSelection === "rock" || computerSelection === "rock") && (playerSelection === "paper" || computerSelection === "paper")) {
     winner.who = (playerSelection === "paper") ? "player" : "computer";
-    winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Paper beats rock`
+    winner.message = `${((winner.who === "player") ? "You Win!" : "You Lose!")} Paper beats rock`;
   }
   return winner;
 }
+
+function buttonClicked (userSelection){
+  console.log(determineWinner(userSelection, getComputerChoice()));
+}
+
+const body = document.querySelector("body");
+
+const btn = document.createElement("button");
+btn.textContent = "Rock Button";
+btn.addEventListener("click", () => buttonClicked("rock"));
+body.appendChild(btn);
