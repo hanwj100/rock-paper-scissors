@@ -72,12 +72,23 @@ function determineWinner(playerSelection, computerSelection) {
   return winner;
 }
 
-const computerIcon = document.getElementById("computerIcon");
 
 function buttonClicked (userSelection){
-  console.log(determineWinner(userSelection, getComputerChoice()));
-  computerIcon.src="./img/computerIcons/rock.png";
-  computerIcon.id = ("computerIcon");
+  let computerSelection = getComputerChoice();
+  let winner = determineWinner(userSelection, computerSelection);
+  const computerIcon = document.getElementById("computerIcon");
+
+  switch(computerSelection) {
+    case "rock":
+      computerIcon.src="./img/computerIcons/rock.png";
+      break;
+    case "paper":
+      computerIcon.src="./img/computerIcons/paper.png";
+      break;
+    case "scissors":
+      computerIcon.src="./img/computerIcons/scissors.png";
+      break;
+  }
 }
 
 const rockBtn = document.querySelector("#rockBtn");
