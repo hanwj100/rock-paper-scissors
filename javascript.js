@@ -72,8 +72,12 @@ function determineWinner(playerSelection, computerSelection) {
   return winner;
 }
 
+const computerIcon = document.getElementById("computerIcon");
+
 function buttonClicked (userSelection){
   console.log(determineWinner(userSelection, getComputerChoice()));
+  computerIcon.src="./img/computerIcons/rock.png";
+  computerIcon.id = ("computerIcon");
 }
 
 const rockBtn = document.querySelector("#rockBtn");

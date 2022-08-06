@@ -18,3 +18,8 @@
     width: 200px;
     height: 200px;
 }
+
+#computerIcon {
+    width: 200px;
+    height: auto;
+}
