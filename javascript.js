@@ -78,7 +78,17 @@ function buttonClicked (userSelection){
 
 const body = document.querySelector("body");
 
-const btn = document.createElement("button");
-btn.textContent = "Rock Button";
-btn.addEventListener("click", () => buttonClicked("rock"));
-body.appendChild(btn);
+const rockBtn = document.createElement("button");
+rockBtn.textContent = "Rock Button";
+rockBtn.addEventListener("click", () => buttonClicked("rock"));
+body.appendChild(rockBtn);
+
+const paperBtn = document.createElement("button");
+paperBtn.textContent = "Paper Button";
+paperBtn.addEventListener("click", () => buttonClicked("paper"));
+body.appendChild(paperBtn);
+
+const scissorsBtn = document.createElement("button");
+scissorsBtn.textContent = "Scissors Button";
+scissorsBtn.addEventListener("click", () => buttonClicked("scissors"));
+body.appendChild(scissorsBtn);
