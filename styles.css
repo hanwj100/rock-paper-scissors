@@ -4,3 +4,17 @@
     width: 200px;
     height: 200px;
 }
+
+#paperBtn {
+    background-image: url(./img/playerIcons/paper.png);
+    background-size: 200px;
+    width: 200px;
+    height: 170px;
+}
+
+#scissorsBtn {
+    background-image: url(./img/playerIcons/scissors.png);
+    background-size: 200px;
+    width: 200px;
+    height: 200px;
+}
