@@ -4,7 +4,7 @@ function game() {
   let playerScore = 0;
   let computerScore = 0;
 
-  while(1) {
+  while (1) {
     let roundWinner = determineWinner(getPlayerChoice(), getComputerChoice());
     console.log(roundWinner.message);
     if (roundWinner.who === "player") {
@@ -73,22 +73,27 @@ function determineWinner(playerSelection, computerSelection) {
 }
 
 
-function buttonClicked (userSelection){
-  let computerSelection = getComputerChoice();
-  let winner = determineWinner(userSelection, computerSelection);
+function changeComputerIcon(computerSelection) {
   const computerIcon = document.getElementById("computerIcon");
 
-  switch(computerSelection) {
+  switch (computerSelection) {
     case "rock":
-      computerIcon.src="./img/computerIcons/rock.png";
+      computerIcon.src = "./img/computerIcons/rock.png";
       break;
     case "paper":
-      computerIcon.src="./img/computerIcons/paper.png";
+      computerIcon.src = "./img/computerIcons/paper.png";
       break;
     case "scissors":
-      computerIcon.src="./img/computerIcons/scissors.png";
+      computerIcon.src = "./img/computerIcons/scissors.png";
       break;
   }
+}
+
+function buttonClicked(userSelection) {
+  let computerSelection = getComputerChoice();
+  let winner = determineWinner(userSelection, computerSelection);
+
+  changeComputerIcon(computerSelection);
 }
 
 const rockBtn = document.querySelector("#rockBtn");
