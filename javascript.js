@@ -3,17 +3,28 @@
 function game() {
   let playerScore = 0;
   let computerScore = 0;
+  updateScore(playerScore, computerScore);
+
+  //DOM manipulation
+  const rockBtn = document.querySelector("#rockBtn");
+  rockBtn.addEventListener("click", () => buttonClicked("rock"));
+
+  const paperBtn = document.querySelector("#paperBtn");
+  paperBtn.addEventListener("click", () => buttonClicked("paper"));
+
+  const scissorsBtn = document.querySelector("#scissorsBtn");
+  scissorsBtn.addEventListener("click", () => buttonClicked("scissors"));
 
   while (1) {
     let roundWinner = determineWinner(getPlayerChoice(), getComputerChoice());
     console.log(roundWinner.message);
     if (roundWinner.who === "player") {
       playerScore += 1;
-      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`);
+      updateScore(playerScore, computerScore);
     }
     else if (roundWinner.who === "computer") {
       computerScore += 1;
-      console.log(`Player Score: ${playerScore}  |  Computer Score: ${computerScore}`);
+      updateScore(playerScore, computerScore);
     }
     else { //tied
       console.log("Play Again!");
@@ -43,7 +54,7 @@ function getComputerChoice() {
   return choiceArray[choice];
 }
 
-
+//Winner class
 function Winner(who, message) {
   this.who = who;
   this.message = message;
@@ -73,6 +84,15 @@ function determineWinner(playerSelection, computerSelection) {
 }
 
 
+
+function buttonClicked(userSelection) {
+  let computerSelection = getComputerChoice();
+  let winner = determineWinner(userSelection, computerSelection);
+
+  changeComputerIcon(computerSelection);
+}
+
+
 function changeComputerIcon(computerSelection) {
   const computerIcon = document.getElementById("computerIcon");
 
@@ -89,18 +109,8 @@ function changeComputerIcon(computerSelection) {
   }
 }
 
-function buttonClicked(userSelection) {
-  let computerSelection = getComputerChoice();
-  let winner = determineWinner(userSelection, computerSelection);
+function updateScore(playerScore, computerScore) {
+  const scoreBoard = document.getElementById("scoreBoard");
+  scoreBoard.textContent = `Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
 
-  changeComputerIcon(computerSelection);
 }
-
-const rockBtn = document.querySelector("#rockBtn");
-rockBtn.addEventListener("click", () => buttonClicked("rock"));
-
-const paperBtn = document.querySelector("#paperBtn");
-paperBtn.addEventListener("click", () => buttonClicked("paper"));
-
-const scissorsBtn = document.querySelector("#scissorsBtn");
-scissorsBtn.addEventListener("click", () => buttonClicked("scissors"));
