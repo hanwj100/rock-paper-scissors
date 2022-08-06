@@ -1,3 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.playerDiv {
+    display: flex;
+    width: 1000px;
+    justify-content: space-around;
+    align-items: center;
+}
+
 #rockBtn {
     background-image: url(./img/playerIcons/rock.png);
     background-size: 200px;
