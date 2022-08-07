@@ -19,7 +19,7 @@ function game() {
   scissorsBtn.addEventListener("click", () => playRound("scissors"));
 }
 
-
+//handles click event of buttons
 function playRound(userSelection) {
   if (playerScore < 3 && computerScore < 3) {
     let computerSelection = getComputerChoice();
@@ -30,27 +30,13 @@ function playRound(userSelection) {
 }
 
 
-//takes user input and returns formatted input if valid, else re-asks for input 
-function getPlayerChoice() {
-  let validInput = false;
-  while (!validInput) {
-    let choice = prompt("Rock, Paper or Scissors?").toLowerCase();
-    if (choice === "rock" || choice === "paper" || choice === "scissors") {
-      validInput = true;
-      return choice;
-    }
-    else {
-      alert("Please make a valid choice.");
-    }
-  }
-}
-
 //generates a random choice for the computer
 function getComputerChoice() {
   const choiceArray = ["rock", "paper", "scissors"];
   let choice = Math.floor(Math.random() * choiceArray.length);
   return choiceArray[choice];
 }
+
 
 //Winner class
 function Winner(who, message) {
