@@ -1,3 +1,8 @@
+//AUTHOR: Woo Zhong Han
+
+
+/* MAIN GAME FUNCTION */
+
 
 let playerScore = 0;
 let computerScore = 0;
@@ -5,7 +10,7 @@ game();
 
 //first to 3 points wins, there may be more than 5 games if ties occur
 function game() {
-  updateScore(playerScore, computerScore);
+  updateScoreBoard(playerScore, computerScore);
   let playerSelection;
 
   //DOM manipulation
@@ -19,13 +24,17 @@ function game() {
   scissorsBtn.addEventListener("click", () => playRound("scissors"));
 }
 
+
+/* GAME LOGIC FUNCTIONS*/
+
+
 //handles click event of buttons
 function playRound(userSelection) {
   if (playerScore < 3 && computerScore < 3) {
     let computerSelection = getComputerChoice();
     let winner = determineWinner(userSelection, computerSelection);
     changeComputerIcon(computerSelection);
-    updateScore(winner.who);
+    updateScoreBoard(winner.who);
   }
 }
 
@@ -35,13 +44,6 @@ function getComputerChoice() {
   const choiceArray = ["rock", "paper", "scissors"];
   let choice = Math.floor(Math.random() * choiceArray.length);
   return choiceArray[choice];
-}
-
-
-//Winner class
-function Winner(who, message) {
-  this.who = who;
-  this.message = message;
 }
 
 
@@ -68,6 +70,10 @@ function determineWinner(playerSelection, computerSelection) {
 }
 
 
+/* UI FUNCTIONS */
+
+
+//change computer icon image based on computer selection
 function changeComputerIcon(computerSelection) {
   const computerIcon = document.getElementById("computerIcon");
 
@@ -84,7 +90,9 @@ function changeComputerIcon(computerSelection) {
   }
 }
 
-function updateScore(winner) {
+
+//update score and refresh score board
+function updateScoreBoard(winner) {
   const scoreBoard = document.getElementById("scoreBoard");
   if (winner === "player") {
     playerScore += 1;
@@ -94,4 +102,14 @@ function updateScore(winner) {
   }
   scoreBoard.textContent = `Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
 
+}
+
+
+/* CLASSES */
+
+
+//Winner class
+function Winner(who, message) {
+  this.who = who;
+  this.message = message;
 }
