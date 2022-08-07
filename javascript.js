@@ -35,6 +35,7 @@ function playRound(userSelection) {
     let winner = determineWinner(userSelection, computerSelection);
     changeComputerIcon(computerSelection);
     updateScoreBoard(winner.who);
+    updateGameMessage(winner.message);
   }
 }
 
@@ -101,7 +102,13 @@ function updateScoreBoard(winner) {
     computerScore += 1;
   }
   scoreBoard.textContent = `Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
+}
 
+
+//update game message
+function updateGameMessage(message) {
+  const gameMessage = document.getElementById("gameMessage");
+  gameMessage.textContent = `${message}`;
 }
 
 
