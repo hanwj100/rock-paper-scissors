@@ -12,17 +12,18 @@ body {
     align-items: center;
 }
 
-#scoreBoard {
-    font-size: 40px;
-    font-weight: bold;
-    margin: 20px;
-}
-
+#scoreBoard,
 #gameMessage {
     font-size: 40px;
     font-weight: bold;
     margin: 20px;
 }
+
+#divider {
+    font-size: 20px;
+    font-weight: bold;
+}
+
 
 #rockBtn {
     background-image: url(./img/playerIcons/rock.png);
