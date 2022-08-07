@@ -1,36 +1,34 @@
 
+let playerScore = 0;
+let computerScore = 0;
+game();
+
 //first to 3 points wins, there may be more than 5 games if ties occur
 function game() {
-  let playerScore = 0;
-  let computerScore = 0;
   updateScore(playerScore, computerScore);
+  let playerSelection;
 
   //DOM manipulation
   const rockBtn = document.querySelector("#rockBtn");
-  rockBtn.addEventListener("click", () => buttonClicked("rock"));
+  rockBtn.addEventListener("click", () => playRound("rock"));
 
   const paperBtn = document.querySelector("#paperBtn");
-  paperBtn.addEventListener("click", () => buttonClicked("paper"));
+  paperBtn.addEventListener("click", () => playRound("paper"));
 
   const scissorsBtn = document.querySelector("#scissorsBtn");
-  scissorsBtn.addEventListener("click", () => buttonClicked("scissors"));
+  scissorsBtn.addEventListener("click", () => playRound("scissors"));
+}
 
-  while (1) {
-    let roundWinner = determineWinner(getPlayerChoice(), getComputerChoice());
-    console.log(roundWinner.message);
-    if (roundWinner.who === "player") {
-      playerScore += 1;
-      updateScore(playerScore, computerScore);
-    }
-    else if (roundWinner.who === "computer") {
-      computerScore += 1;
-      updateScore(playerScore, computerScore);
-    }
-    else { //tied
-      console.log("Play Again!");
-    }
+
+function playRound(userSelection) {
+  if (playerScore < 3 && computerScore < 3) {
+    let computerSelection = getComputerChoice();
+    let winner = determineWinner(userSelection, computerSelection);
+    changeComputerIcon(computerSelection);
+    updateScore(winner.who);
   }
 }
+
 
 //takes user input and returns formatted input if valid, else re-asks for input 
 function getPlayerChoice() {
@@ -84,15 +82,6 @@ function determineWinner(playerSelection, computerSelection) {
 }
 
 
-
-function buttonClicked(userSelection) {
-  let computerSelection = getComputerChoice();
-  let winner = determineWinner(userSelection, computerSelection);
-
-  changeComputerIcon(computerSelection);
-}
-
-
 function changeComputerIcon(computerSelection) {
   const computerIcon = document.getElementById("computerIcon");
 
@@ -109,8 +98,14 @@ function changeComputerIcon(computerSelection) {
   }
 }
 
-function updateScore(playerScore, computerScore) {
+function updateScore(winner) {
   const scoreBoard = document.getElementById("scoreBoard");
+  if (winner === "player") {
+    playerScore += 1;
+  }
+  if (winner === "computer") {
+    computerScore += 1;
+  }
   scoreBoard.textContent = `Player Score: ${playerScore}  |  Computer Score: ${computerScore}`;
 
 }
